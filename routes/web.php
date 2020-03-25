@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/privacy', 'PrivacyController@index');
+Route::get('/tos', 'TermsOfServiceController@index');
