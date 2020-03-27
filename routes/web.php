@@ -22,3 +22,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/privacy', 'PrivacyController@index');
 Route::get('/tos', 'TermsOfServiceController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
