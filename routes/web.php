@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,24 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/privacy', 'PrivacyController@index');
+
+Route::get('/privacy', 'PrivacyController@index')->name('privacy');
 Route::get('/tos', 'TermsOfServiceController@index');
-Auth::routes();
+Route::resource ('/video', 'VideoController');
+Route::get('/getChannels', 'GetChannels@index');
+Route::get('/getPlaylist', 'VideoController@getPlaylist');
+Route::get('/test','TestController');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+    /*
+    |--------------------------------------------------------------------------
+    | Web API OAuth 2.0 Web Routes
+    |--------------------------------------------------------------------------
+    |
+    | These are part of the Laravel/Socialite
+    |
+    */
+    Route::get('/login', 'auth\AuthenticationController@getLogin')
+        ->name('login')
+        ->middleware('guest');
+    Route::get( '/login/{social}', 'auth\AuthenticationController@getSocialRedirect' )
+        ->middleware('guest');
+    Route::get( '/login/{social}/callback', 'auth\AuthenticationController@getSocialCallback' )
+        ->middleware('guest');

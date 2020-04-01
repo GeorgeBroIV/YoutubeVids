@@ -1,0 +1,62 @@
+<?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\DB;
+    use App\Helpers\JSON;
+
+class VideoController extends Controller
+{
+    public function index()
+    {
+        return view('video.index');
+    }
+    public function create(Request $request)
+    {
+        if ($request="playlistsItems")
+        {
+            $playlists = [JSON::getPlaylistItemsList(['playlists.json', 'playlists'])];
+            $playlistsItems = [JSON::getPlaylistItemsList(['playlistsItems.json', 'playlistsItems'])];
+            $fileArray = $playlistsItems[0];
+            dd($playlistsItems);
+            return view('test.index', ['playlistsItems' => $playlistsItems]);
+ //           return view('video.app',['playlistsItems' => $playlistsItems]);
+        }
+        elseif ($request="playlists")
+        {
+            $playlists = [JSON::getPlaylistItemsList(['playlists.json', 'playlists'])];
+            $playlistsItems = [JSON::getPlaylistItemsList(['playlistsItems.json', 'playlistsItems'])];
+            $fileArray = $playlistsItems[0];
+            dd($playlistsItems);
+            return view('test.index', ['playlistsItems' => $playlistsItems]);
+ //           return view('video.app',['playlistsItems' => $playlistsItems]);
+        }
+        else
+        {
+            return redirect()->action('video.index');
+        }
+
+    }
+    public function store()
+    {
+        //
+    }
+    public function show(Request $request)
+    {
+        $videoId = '8mn-FFjIbo8';
+        return view('video.show',['videoId' => $videoId]);
+    }
+    public function edit()
+    {
+        //
+    }
+    public function update()
+    {
+        //
+    }
+    public function destroy()
+    {
+
+    }
+}

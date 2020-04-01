@@ -30,4 +30,18 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT'),
+    ],
+
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => 'http://your-callback-url',
+    ],
+#	'google' => [
+#		'key' => env([Google_Client::OAUTH2_AUTH_URL, go),
+#	],
 ];
